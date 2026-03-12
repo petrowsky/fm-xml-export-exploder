@@ -23,26 +23,26 @@ Fenster fixieren
 Blätternmodus aktivieren [ Pause: OFF ]
 
 # Syntax
-Script ausführen [ Aus Liste ; "Show All Syntax" ]
+Script ausführen [ "Show All Syntax" ; Specified: Aus Liste ; Parameter: ]
 
 # SyntaxTemp
-Script ausführen [ Aus Liste ; "Tidy up _SyntaxTemp" ]
+Script ausführen [ "Tidy up _SyntaxTemp" ; Specified: Aus Liste ; Parameter: ]
 
 # GUISyntax
-Script ausführen [ Aus Liste ; "Prepare GUI-Syntax" ]
+Script ausführen [ "Prepare GUI-Syntax" ; Specified: Aus Liste ; Parameter: ]
 
 # Colors
-Script ausführen [ Aus Liste ; "Prepare Colors" ]
+Script ausführen [ "Prepare Colors" ; Specified: Aus Liste ; Parameter: ]
 
 # Color-Palettes
-Script ausführen [ Aus Liste ; "Show Default Palette" ]
-Script ausführen [ Aus Liste ; "Apply Palette" ]
+Script ausführen [ "Show Default Palette" ; Specified: Aus Liste ; Parameter: ]
+Script ausführen [ "Apply Palette" ; Specified: Aus Liste ; Parameter: ]
 
 # Prepare Home Screen
 Gehe zu Layout [ Layout: "Home" ; Animation: Ohne ]
 Wenn [ Hole( AnzahlDatensätzeGesamt ) = 0 ]
 	Neuer Datensatz/Abfrage
-	Eigenes Dialogfeld anzeigen [ Title: Hole( ScriptName ) & " " & Hole( DateiName ) ; Message: "Warning, home record was missing, please check!" ; ⚠️ PARAMETER "Button1" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Button2" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Button3" NOT PARSED ⚠️ ]
+	Eigenes Dialogfeld anzeigen [ Title: Hole( ScriptName ) & " " & Hole( DateiName ) ; Message: "Warning, home record was missing, please check!" ; Default Button: OK ]
 Sonst, wenn [ Hole( AnzahlDatensätzeGesamt ) = 1 ]
 	Alle Datensätze anzeigen
 Sonst
@@ -51,7 +51,7 @@ Sonst
 	Aktuellen Datens. ausschließen
 	Alle Datensätze löschen [ Mit Dialog: OFF ]
 	Alle Datensätze anzeigen
-	Eigenes Dialogfeld anzeigen [ Title: Hole( ScriptName ) & " " & Hole( DateiName ) ; Message: "Warning, too many home records!¶Extra records deleted, please check." ; ⚠️ PARAMETER "Button1" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Button2" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Button3" NOT PARSED ⚠️ ]
+	Eigenes Dialogfeld anzeigen [ Title: Hole( ScriptName ) & " " & Hole( DateiName ) ; Message: "Warning, too many home records!¶Extra records deleted, please check." ; Default Button: OK ]
 Ende (wenn)
 
 # Clear globals
@@ -103,7 +103,7 @@ Werkzeugleisten ein-/ausblenden [ Fixieren: OFF ; Mit Datensatz-bearbeiten-Werkz
 
 Eigenes Dialogfeld anzeigen [ Title: Hole( ScriptName ) ; Message: "Please remember to:¶" &
 				" 1. remove any private syntax coloring, and¶" &
-				" 2. tidy the scripts-folders away" ; ⚠️ PARAMETER "Button1" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Button2" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Button3" NOT PARSED ⚠️ ]
+				" 2. tidy the scripts-folders away" ; Default Button: OK ; Button 2: HALT ]
 Wenn [ Hole ( LetzteMeldungswahl ) = 2 ]
 	# 2: HALT
 	Alle Scripts abbrechen

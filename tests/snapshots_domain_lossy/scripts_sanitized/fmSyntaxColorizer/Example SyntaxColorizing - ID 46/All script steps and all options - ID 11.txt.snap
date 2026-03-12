@@ -89,13 +89,13 @@ Transaktion bestätigen
 Scriptpause setzen [ ⚠️ PARAMETER "Options" NOT PARSED ⚠️ ]
 Scriptpause setzen [ ⚠️ PARAMETER "Options" NOT PARSED ⚠️ ]
 
-Script ausführen [ Aus Liste ; "All script steps" ]
-Script ausführen [ Aus Liste ; "" ]
-Script ausführen [ Aus Liste ; "All script steps" ; Parameter: $ScriptParameter ]
-Script ausführen [ Aus Liste ; "" ; File: "<Unbekannt>" ]
+Script ausführen [ "All script steps" ; Specified: Aus Liste ; Parameter: ]
+Script ausführen [ "" ; Specified: Aus Liste ; Parameter: ]
+Script ausführen [ "All script steps" ; Specified: Aus Liste ; Parameter: $ScriptParameter ]
+Script ausführen [ "" ; Specified: Aus Liste ; File: "<Unbekannt>" ; Parameter: ]
 # Two error cases for fmSyntaxColorizer:
-Script ausführen [ Aus Liste ; "All script steps" ; Parameter: /* commented out */ ]
-Script ausführen [ Aus Liste ; "All script steps" ; Parameter: "/* not only commented out, but also stringified! */" ]
+Script ausführen [ "All script steps" ; Specified: Aus Liste ; Parameter: /* commented out */ ]
+Script ausführen [ "All script steps" ; Specified: Aus Liste ; Parameter: "/* not only commented out, but also stringified! */" ]
 
 Script auf Server ausführen [ Aus Liste ; ⚠️ PARAMETER "Parameter" NOT PARSED ⚠️ ; Auf Beendigung warten: ON ]
 Script auf Server ausführen [ Aus Liste ; ⚠️ PARAMETER "Parameter" NOT PARSED ⚠️ ; Auf Beendigung warten: OFF ]
@@ -978,10 +978,11 @@ Web Viewer festlegen [ "wv" ; ⚠️ PARAMETER "action" NOT PARSED ⚠️ ]
 Web Viewer festlegen [ "wv" ; ⚠️ PARAMETER "action" NOT PARSED ⚠️ ]
 Web Viewer festlegen [ "wv" ; ⚠️ PARAMETER "action" NOT PARSED ⚠️ ]
 
-Eigenes Dialogfeld anzeigen [ Title: $DlgTitle ; Message: $DlgMessage ; ⚠️ PARAMETER "Button1" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Button2" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Button3" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Field1" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Field2" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Field3" NOT PARSED ⚠️ ]
+Eigenes Dialogfeld anzeigen [ Title: $DlgTitle ; Message: $DlgMessage ; Default Button: OK ; Button 2: Cancel ; Button 3: Alternative ; Input 1: _Home::_gInputText1 ; Label 1: "Egal" ; Input 2: _Home::_gInputText2 ; Label 2: "Karl" ; Input 3: _Home::_gInputText3 ; Label 3: "PW" ]
 Eigenes Dialogfeld anzeigen [ Title: $DlgTitle ; Message: "Only Button 1 and 3¶" & 
-				"and input 2" ; ⚠️ PARAMETER "Button1" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Button2" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Button3" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Field2" NOT PARSED ⚠️ ]
-Eigenes Dialogfeld anzeigen [ Title: $DlgTitle ; Message: $DlgMessage ; ⚠️ PARAMETER "Button1" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Button2" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Button3" NOT PARSED ⚠️ ]
+				"and input 2" ; Default Button: OK ; Button 3: Alternative ; Input 2: _Home::_gInputText2 ; Label 2: "PW" &
+				_Home::__ID ]
+Eigenes Dialogfeld anzeigen [ Title: $DlgTitle ; Message: $DlgMessage ; Default Button: OK ; Button 2: Cancel ; Button 3: Alternative ]
 
 Sprechen [ "Standard voice" ; ⚠️ PARAMETER "Voice" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Wait" NOT PARSED ⚠️ ]
 Sprechen [ "Agnes says.." ; ⚠️ PARAMETER "Voice" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Wait" NOT PARSED ⚠️ ]

@@ -7,7 +7,7 @@ expression: output_content
 
 
 Wenn [ _Palette::__ID = 1 ]
-	Eigenes Dialogfeld anzeigen [ Title: "Set Default" ; Message: "This palette IS the default colors palette!" ; ⚠️ PARAMETER "Button1" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Button2" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Button3" NOT PARSED ⚠️ ]
+	Eigenes Dialogfeld anzeigen [ Title: "Set Default" ; Message: "This palette IS the default colors palette!" ; Default Button: OK ]
 	Aktuelles Script verlassen []
 	# -->
 Ende (wenn)
@@ -19,4 +19,4 @@ Schreibe Änderung Datens./Abfrage [ Mit Dialog: OFF ]
 
 Gehe zu Layout [ Layout: "Syntax" ; Animation: Ohne ]
 Alle Datensätze anzeigen
-Script ausführen [ Aus Liste ; "Change Palette" ]
+Script ausführen [ "Change Palette" ; Specified: Aus Liste ; Parameter: ]

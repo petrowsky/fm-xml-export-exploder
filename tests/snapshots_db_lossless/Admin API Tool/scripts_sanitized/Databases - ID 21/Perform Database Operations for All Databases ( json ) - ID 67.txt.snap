@@ -21,14 +21,14 @@ Variable setzen [ $error ; 0 ]
 
 #  Validate json parameter and load it into local variables
 Wenn [ JsonToVars ( Hole ( ScriptParameter ) ; "_" ) ]
-	Eigenes Dialogfeld anzeigen [ Title: "Error" ; Message: "There was an error evaluating variables: " & JSONGetElement ( $json_debug ; "json" ) & " - " & GetErrorDesc_en ( JSONGetElement ( $json_debug ; "json" ) ) ; ⚠️ PARAMETER "Button1" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Button2" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Button3" NOT PARSED ⚠️ ]
+	Eigenes Dialogfeld anzeigen [ Title: "Error" ; Message: "There was an error evaluating variables: " & JSONGetElement ( $json_debug ; "json" ) & " - " & GetErrorDesc_en ( JSONGetElement ( $json_debug ; "json" ) ) ; Default Button: OK ]
 	Aktuelles Script verlassen [ 5 // command is invalid ]
 Ende (wenn)
 
 # -------------------------------------------------------------
 #  SET-UP
 # -------------------------------------------------------------
-Script ausführen [ Aus Liste ; "Set Config" ]
+Script ausführen [ "Set Config" ; Specified: Aus Liste ; Parameter: ]
 Variable setzen [ $endpoint ; "/databases" ]
 Wenn [ $_status = "OPENED" ]
 	Variable setzen [ $json ; JSONSetElement ( "" ; 
@@ -63,9 +63,9 @@ Variable setzen [ $$API.UPDATE ; "1" ]
 #  PROCESS
 # -------------------------------------------------------------
 Aus URL einfügen [ SSL-Zertifikate verifizieren: OFF ; Auswahl: ON ; Mit Dialog: OFF ; Target: $$my.result ; ⚠️ PARAMETER "URL" NOT PARSED ⚠️ ; $curloptions ]
-Script ausführen [ Aus Liste ; "Handle response" ]
+Script ausführen [ "Handle response" ; Specified: Aus Liste ; Parameter: ]
 # update database listing
-Script ausführen [ Aus Liste ; "List Databases" ]
+Script ausführen [ "List Databases" ; Specified: Aus Liste ; Parameter: ]
 
 # -------------------------------------------------------------
 #  CLEAN UP

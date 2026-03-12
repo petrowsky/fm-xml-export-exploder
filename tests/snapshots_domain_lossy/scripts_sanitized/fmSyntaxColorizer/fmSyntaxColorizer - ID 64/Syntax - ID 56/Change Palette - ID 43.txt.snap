@@ -23,7 +23,7 @@ Wenn [ _Palette::DisableVariableChecking ]
 	# Disable VariableChecking for this palette
 	Variable setzen [ $MBS ; MBS( "SyntaxColoring.CheckVariableDeclaration.Disable" ) ]
 Sonst, wenn [ _Home::_gVariableCheckingEnabled ]
-	Script ausführen [ Aus Liste ; "MBS_SyntaxColoring( Action )" ; Parameter: "CheckVariableDeclaration.Enable" ]
+	Script ausführen [ "MBS_SyntaxColoring( Action )" ; Specified: Aus Liste ; Parameter: "CheckVariableDeclaration.Enable" ]
 Ende (wenn)
 
 
@@ -33,7 +33,7 @@ Variable setzen [ $CountSpecificSyntax ; Anzahl( Palette.Color_OnlyPaletteSpecif
 Variable setzen [ $CountOfSyntaxToCreate ; $CountSpecificColors - $CountSpecificSyntax ]
 Wenn [ $CountOfSyntaxToCreate > 0 ]
 	Variable setzen [ $PaletteName ; _Palette::PaletteName ]
-	Eigenes Dialogfeld anzeigen [ Message: "Palette '" & $PaletteName & "' needs " & $CountOfSyntaxToCreate & " syntax " & Falls( $CountOfSyntaxToCreate = 1 ; "entry" ; "entries" ) & "!¶Should they be created?" ; ⚠️ PARAMETER "Button1" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Button2" NOT PARSED ⚠️ ; ⚠️ PARAMETER "Button3" NOT PARSED ⚠️ ]
+	Eigenes Dialogfeld anzeigen [ Message: "Palette '" & $PaletteName & "' needs " & $CountOfSyntaxToCreate & " syntax " & Falls( $CountOfSyntaxToCreate = 1 ; "entry" ; "entries" ) & "!¶Should they be created?" ; Default Button: Create ; Button 2: Skip ]
 	Wenn [ Hole( LetzteMeldungswahl ) = 1 ]
 		Gehe zu Bezugsdatensatz [ Table: Palette.Color_OnlyPaletteSpecificColors ; Layout: "Colors" ; Show related ]
 		# FOR EACH Color
@@ -56,7 +56,7 @@ Gehe zu Layout [ Layout: "Home" ; Animation: Ohne ]
 Ersetze alle Feldwerte [ Home.Syntax_ALL::_ID_Palette ; Durch Berechnung ersetzen: $Palette_ID ]
 
 
-Script ausführen [ Aus Liste ; "Set Home Screen Info to content of ( Object )" ; Parameter: "switchingDarkLight" ]
+Script ausführen [ "Set Home Screen Info to content of ( Object )" ; Specified: Aus Liste ; Parameter: "switchingDarkLight" ]
 
 
 # Return to the original layout
